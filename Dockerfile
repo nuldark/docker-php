@@ -1,6 +1,9 @@
 ARG PHP_VERSION=8.3.0RC3-fpm
 FROM php:${PHP_VERSION}
 
+COPY ./conf.d/php.ini /usr/local/etc/php/conf.d
+COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/
+
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     rm -f /var/log/lastlog /var/log/faillog
