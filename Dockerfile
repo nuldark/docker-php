@@ -1,4 +1,6 @@
 ARG PHP_VERSION=8.3.0RC3-fpm
+ENV PHP_VERSION ${PHP_VERSION}
+
 FROM php:${PHP_VERSION}
 
 LABEL org.opencontainers.image.url="https://github.com/bytebits9/php-fpm"
