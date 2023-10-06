@@ -1,8 +1,8 @@
 ARG PHP_VERSION=8.3.0RC3-fpm
 FROM php:${PHP_VERSION}
 
-LABEL org.opencontainers.image.url="https://github.com/bytebits9/php-fpm"
-LABEL org.opencontainers.image.source=https://github.com/bytebits9/php-fpm
+LABEL org.opencontainers.image.url="https://github.com/null/php-fpm"
+LABEL org.opencontainers.image.source=https://github.com/nulldark/php-fpm
 LABEL org.opencontainers.image.title="php-fpm"
 LABEL org.opencontainers.image.base.name="docker.io/library/php-fpm:alpine"
 LABEL org.opencontainers.image.licenses=MIT
