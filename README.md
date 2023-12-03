@@ -3,7 +3,8 @@
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/nulldark/php)
 
 ## Supported tags and respective Dockerfile links
-- [`8.2`, `latest`](https://github.com/nulldark/php/blob/master/8.2/Dockerfile)
+- [`8.3, `latest`](https://github.com/nulldark/php/blob/master/8.3/Dockerfile)
+- [`8.2`](https://github.com/nulldark/php/blob/master/8.2/Dockerfile)
 
 ## Quick reference
 - **Image based on**:   
