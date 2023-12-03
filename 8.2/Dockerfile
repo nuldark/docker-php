@@ -1,3 +1,5 @@
+FROM composer:2.3 as composer
+
 FROM ghcr.io/nulldark/alpine:latest
 
 LABEL org.opencontainers.image.title="php"
@@ -46,6 +48,8 @@ RUN sed -e 's;/bin/ash$;/bin/bash;g' -i /etc/passwd
 
 COPY ./conf.d/ /etc/php8/conf.d/
 COPY ./php-fpm.d/ /etc/php8/php-fpm.d/
+
+COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 
 RUN sed -i "s#listen = 0.0.0.0:__PHP_FPM_PORT__#listen = 0.0.0.0:$PHP_FPM_PORT;#" /etc/php8/php-fpm.d/www.conf
 
