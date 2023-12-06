@@ -44,6 +44,7 @@ RUN apk add ca-certificates && \
         php83 \
     && ln -s /usr/bin/php83 /usr/bin/php && ln -s /usr/sbin/php-fpm83 /usr/bin/php-fpm
 
+
 RUN sed -e 's;/bin/ash$;/bin/bash;g' -i /etc/passwd
 
 COPY ./conf.d/ /etc/php8/conf.d/
