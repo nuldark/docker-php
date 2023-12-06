@@ -42,7 +42,8 @@ RUN apk add ca-certificates && \
         php82-xmlwriter \
         php82-fpm \
         php82 \
-    && ln -s /usr/bin/php82 /usr/bin/php && ln -s /usr/bin/php-fpm82 /usr/bin/php-fpm
+
+    && ln -s /usr/bin/php82 /usr/bin/php && ln -s /usr/sbin/php-fpm82 /usr/bin/php-fpm
 
 RUN sed -e 's;/bin/ash$;/bin/bash;g' -i /etc/passwd
 
