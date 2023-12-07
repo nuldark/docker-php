@@ -46,12 +46,12 @@ RUN apk add ca-certificates && \
 
 RUN sed -e 's;/bin/ash$;/bin/bash;g' -i /etc/passwd
 
-COPY ./conf.d/ /etc/php8/conf.d/
-COPY ./php-fpm.d/ /etc/php8/php-fpm.d/
+COPY ./conf.d/ /etc/php83/conf.d/
+COPY ./php-fpm.d/ /etc/php83/php-fpm.d/
 
 COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 
-RUN sed -i "s#listen = 0.0.0.0:__PHP_FPM_PORT__#listen = 0.0.0.0:$PHP_FPM_PORT;#" /etc/php8/php-fpm.d/www.conf
+RUN sed -i "s#listen = 0.0.0.0:__PHP_FPM_PORT__#listen = 0.0.0.0:$PHP_FPM_PORT;#" /etc/php83/php-fpm.d/www.conf
 
 ARG PHP_XDEBUG=false
 ENV PHP_XDEBUG=${PHP_XDEBUG}
