@@ -42,13 +42,12 @@ RUN apk add ca-certificates && \
         php82-xmlwriter \
         php82-fpm \
         php82 \
-
     && ln -s /usr/bin/php82 /usr/bin/php && ln -s /usr/sbin/php-fpm82 /usr/bin/php-fpm
 
 RUN sed -e 's;/bin/ash$;/bin/bash;g' -i /etc/passwd
 
-COPY ./conf.d/ /etc/php8/conf.d/
-COPY ./php-fpm.d/ /etc/php8/php-fpm.d/
+COPY ./conf.d/ /etc/php83/conf.d/
+COPY ./php-fpm.d/ /etc/php83/php-fpm.d/
 
 COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 

@@ -47,8 +47,8 @@ RUN apk add ca-certificates && \
 
 RUN sed -e 's;/bin/ash$;/bin/bash;g' -i /etc/passwd
 
-COPY ./conf.d/ /etc/php8/conf.d/
-COPY ./php-fpm.d/ /etc/php8/php-fpm.d/
+COPY ./conf.d/ /etc/php83/conf.d/
+COPY ./php-fpm.d/ /etc/php83/php-fpm.d/
 
 COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 
