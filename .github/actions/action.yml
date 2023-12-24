@@ -1,0 +1,27 @@
+name: Build
+description: Build PHP-FPM image
+inputs:
+  version:
+    description: php-fpm version
+    required: true
+  tags:
+    description: image tags
+    required: true
+  platform:
+    description: docker platform
+    required: false
+    default: linux/amd64
+runs:
+  using: "composite"
+  steps:
+  - name: Build image
+    env:
+      PHP_VERSION: ${{ inputs.version }}
+      TARGET_PLATFORM: ${{ inputs.platform }}
+      TAGS: ${{ inputs.tags }}
+    run: |
+      set -e
+      make buildx-build-amd64
+      make buildx-build
+      . $GITHUB_ACTION_PATH/release.sh
+    shell: bash
