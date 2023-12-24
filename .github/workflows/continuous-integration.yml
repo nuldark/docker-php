@@ -7,10 +7,9 @@ on:
   pull_request: 
     branches: [ "master" ]
 
-env: 
+env:
+  PA_TOKEN: ${{ secrets.PA_TOKEN }}
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-  DOCKER_IMAGE_NAME: ${{ github.repository }}
   DOCKER_REGISTRY: ghcr.io
 
 jobs:
