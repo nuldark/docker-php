@@ -1,6 +1,6 @@
-# PHP Docker Container Images
+# PHP FPM Docker Container Images
 
-![GitHub release (with filter)](https://img.shields.io/github/v/release/nulldark/php)
+![GitHub release (with filter)](https://img.shields.io/github/v/release/nulldark/php-fpm)
 
 ## Supported tags and respective Dockerfile links
 - [`8.3`, `latest`](https://github.com/nulldark/php/blob/master/8.3/Dockerfile)
@@ -17,7 +17,7 @@
   [nulldark](https://github.com/nulldark)
 
 - **Where to file issues**:    
-  [https://github.com/nulldark/nginx/issues](https://github.com/nulldark/php/issues?q=)
+  [https://github.com/nulldark/php-fpm/issues](https://github.com/nulldark/php/issues?q=)
 
 ## How to use this image
 
@@ -28,13 +28,13 @@ $ docker run --name some-php-fpm -d php-fpm
 ```
 
 ### ... via [`docker-compose`](https://github.com/docker/compose)
-Example `docker-compose.yml` for `nginx`:
+Example `docker-compose.yml` for `php-fpm`:
 
 ```yaml
 version: '3.1'
 
 services:
-    php:
+    php-fpm:
         image: ghrc.io/nulldark/php-fpm
         restart: always
         ports:
@@ -43,7 +43,7 @@ services:
 
 ## Environment Variables
 
-The Nginx image uses several environment variables which are easy to miss.
+The php-fpm image uses several environment variables which are easy to miss.
 
 | Variable       | Default Value  | Description |
 |----------------|----------------|-------------|
