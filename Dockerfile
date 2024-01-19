@@ -1,39 +1,46 @@
-FROM ghcr.io/nulldark/alpine:edge
+FROM ghcr.io/nulldark/alpine
 
-LABEL org.opencontainers.image.title="php"
-LABEL org.opencontainers.image.description="php docker container image"
-LABEL org.opencontainers.image.url=https://github.com/nulldark/php
-LABEL org.opencontainers.image.source=https://github.com/nulldark/php
+LABEL org.opencontainers.image.title="php-fpm"
+LABEL org.opencontainers.image.description="php fpm docker container image"
+LABEL org.opencontainers.image.url=https://github.com/nulldark/php-fpm
+LABEL org.opencontainers.image.source=https://github.com/nulldark/php-fpm
 LABEL org.opencontainers.image.authors="Dominik Szamburski <dominikszamburski99@gmai.com>"
 LABEL org.opencontainers.image.vendor="nulldark"
 LABEL org.opencontainers.image.licenses="MIT"
 
-# Checking if www-data user exists and creating directory structure
-RUN set -eux; \
-    adduser -u 82 -D -S -G www-data www-data
+ENV PHP_VERSION 8.3.2
+ENV PHP_URL="https://www.php.net/distributions/php-$PHP_VERSION.tar.xz"
+ENV PHP_ASC_URL="https://www.php.net/distributions/php-$PHP_VERSION.tar.xz.asc"
+ENV CHECKSUM="eca5deac02d77d806838275f8a3024b38b35ac0a5d9853dcc71c6cbe3f1f8765"
 
-ENV PHP_PREFIX_HOME /usr
+ENV PHP_PREFIX_HOME /usr/local
 ENV PHP_SBIN_DIR "$PHP_PREFIX_HOME/bin"
-ENV PHP_INI_DIR /etc/php/{{ VERSION }}
+ENV PHP_INI_DIR "/usr/local/etc/php"
 ENV PHP_SCAN_DIR "$PHP_INI_DIR/conf.d"
 
+# Gets PHP sources and checking the checksum
+ENV GPG_KEYS 39B641343D8C104B2B146DC3F9C39DC0B9698544 E60913E4DF209907D8E30D96659A97C9CF2A795A 1198C0117593497A5EC5C199286AF1F9897469DC
+
+ENV PHP_CFLAGS="-fstack-protector-strong -fpic -fpie -O3 \
+    -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 \
+    -march=native \
+    -funroll-loops \
+    -ffast-math \
+    -finline-functions \
+"
+
+ENV PHP_CPPFLAGS="$PHP_CFLAGS"
+ENV PHP_LDFLAGS="-Wl,-O3 -pie"
+
 RUN set -eux; \
+    adduser -u 82 -D -S -G www-data www-data; \
     mkdir -p "$PHP_SCAN_DIR"; \
     [ ! -d /var/www/html ]; \
     mkdir -p /var/www/html; \
     chown www-data:www-data /var/www/html; \
-    chmod 1777 /var/www/html
-
-# Gets PHP sources and checking the checksum
-ENV GPG_KEYS 1198C0117593497A5EC5C199286AF1F9897469DC C28D937575603EB4ABB725861C0779DC5C0A9DE4 AFD8691FDAEDF03BDF6E460563F15A9B715376CA
-
-ENV PHP_VERSION {{ VERSION }}{{ PATCH }}
-ENV PHP_URL="https://www.php.net/distributions/php-{{ VERSION }}{{ PATCH }}.tar.xz"
-ENV PHP_ASC_URL="https://www.php.net/distributions/php-{{ VERSION }}{{ PATCH }}.tar.xz.asc"
-ENV CHECKSUM="{{ CHECKSUM }}"
-
-RUN set -eux; \
-	apk add --no-cache --virtual .fetch-deps gnupg; \
+    chmod 1777 /var/www/html; \
+    \
+	apk add --no-cache --virtual .fetch-deps gnupg curl; \
 	\
 	mkdir -p /usr/src; \
 	cd /usr/src; \
@@ -55,21 +62,8 @@ RUN set -eux; \
 		rm -rf "$GNUPGHOME"; \
     fi; \
     \
-    apk del --no-network .fetch-deps
-
-ENV PHP_CFLAGS="-fstack-protector-strong -fpic -fpie -O3 \
-    -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 \
-    -march=native \
-    -funroll-loops \
-    -ffast-math \
-    -finline-functions \
-"
-
-ENV PHP_CPPFLAGS="$PHP_CFLAGS"
-ENV PHP_LDFLAGS="-Wl,-O3 -pie"
-
-# fetch required deps
-RUN set -eux; \
+    apk del --no-network .fetch-deps ; \
+    \
     apk add --update --no-cache --virtual=.build-deps \
         # required deps for build
         autoconf \
@@ -134,7 +128,7 @@ RUN set -eux; \
         --disable-gcc-global-regs \
         --disable-rpath \
         # ftp
-        --enable-ftp \
+        #--enable-ftp \
         # mbstring
         --enable-mbstring \
         # iconv
@@ -158,26 +152,27 @@ RUN set -eux; \
 		--with-pear \
         # argon2
         --with-password-argon2 \
-        # -- gd
-        --enable-gd \
-        --with-freetype=/usr/lib/ \
-        --with-jpeg=/usr/lib/ \
-        --with-avif \
-        --with-webp \
-        # --intl
-        --enable-intl \
-        # --pdo-mysql
+        #-- gd \
+        #--enable-gd \
+        #--with-freetype=/usr/lib/ \
+        #--with-jpeg=/usr/lib/ \
+        #--with-avif \
+        #--with-webp \
+        #--intl \
+        #--enable-intl \
+        # pdo-mysql \
         --with-pdo-mysql \
-        # --pdo-pgsql
+        # pdo-pgsql \
         --with-pdo-pgsql \
         # soap
-        --enable-soap \
-        --with-libxml \
+        #--enable-soap \
+        #--with-libxml \
         # sodium
-        --with-sodium \
+        #--with-sodium \
         # sockets
-        --enable-sockets \
-        # fpm
+        #--enable-sockets \
+        # fpm \
+        --disable-cgi \
         --enable-fpm \
 		--with-fpm-user=www-data \
 		--with-fpm-group=www-data \
@@ -202,29 +197,29 @@ RUN set -eux; \
     cd /; \
     rm -rf /usr/src/php; \
     \
-    runDeps="$( \
-        scanelf --needed --nobanner --format '%n#p' --recursive /usr \
-            | tr ',' '\n' \
-            | sort -u \
-            | awk 'system("[ -e /usr/lib/php" $1 " ]") == 0 { next } { print "so:" $1 }' \
-    )"; \
-    apk add --no-cache $runDeps; \
-    apk del --no-network .build-deps; \
+	runDeps="$( \
+		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local \
+			| tr ',' '\n' \
+			| sort -u \
+			| awk 'system("[ -e /usr/local/lib/" $1 " ]") == 0 { next } { print "so:" $1 }' \
+	)"; \
+	apk add --no-cache $runDeps; \
+    \
+    apk del --no-network .build-deps ; \
     \
     pecl update-channels; \
     rm -rf /tmp/pear ~/.pearrc; \
     \
-    php --version
-
-WORKDIR /var/www/html
-
-RUN set -eux; \
-    cd /etc/php/{{ VERSION }}; \
+    php --version; \
+    \
+    cd /usr/local/etc; \
     if [ -d php-fpm.d ]; then \
         sed 's!=NONE/!=!g' php-fpm.conf.default | tee php-fpm.conf > /dev/null; \
 		cp php-fpm.d/www.conf.default php-fpm.d/www.conf; \
-	fi; \
-	rm -rf /etc/php/{{ VERSION }}/**/*.default
+	fi
+
+
+WORKDIR /var/www/html
 
 STOPSIGNAL SIGQUIT
 
