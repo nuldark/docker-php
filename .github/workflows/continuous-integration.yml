@@ -4,7 +4,10 @@ on:
   push: 
     branches: [ "master" ]
     tags: [ 'v*.*.*' ]
-  pull_request: 
+    paths:
+      - 8.2/Dockerfile
+      - 8.3/Dockerfile
+  pull_request:
     branches: [ "master" ]
 
 env:
