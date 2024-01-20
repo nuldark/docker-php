@@ -35,7 +35,7 @@ version: '3.1'
 
 services:
     php-fpm:
-        image: ghrc.io/nulldark/php-fpm
+        image: ghcr.io/nulldark/php-fpm
         restart: always
         ports:
             - "9000:9000"
