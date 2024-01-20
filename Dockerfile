@@ -197,12 +197,13 @@ RUN set -eux; \
     cd /; \
     rm -rf /usr/src/php; \
     \
-	runDeps="$( \
-		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local \
-			| tr ',' '\n' \
-			| sort -u \
-			| awk 'system("[ -e /usr/local/lib/" $1 " ]") == 0 { next } { print "so:" $1 }' \
-	)"; \
+      runDeps="$( \
+    		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local \
+    			| tr ',' '\n' \
+    			| sort -u \
+    			| awk 'system("[ -e /usr/local/lib/" $1 " ]") == 0 { next } { print "so:" $1 }' \
+    	)";  \
+    \
 	apk add --no-cache $runDeps; \
     \
     apk del --no-network .build-deps ; \
@@ -212,7 +213,8 @@ RUN set -eux; \
     \
     php --version; \
     \
-    cd /usr/local/etc; \
+    cd /usr/local/etc/php; \
+    cp php-fpm.conf.default php-fpm.conf; \
     if [ -d php-fpm.d ]; then \
         sed 's!=NONE/!=!g' php-fpm.conf.default | tee php-fpm.conf > /dev/null; \
 		cp php-fpm.d/www.conf.default php-fpm.d/www.conf; \
