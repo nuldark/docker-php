@@ -3,7 +3,7 @@
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/nulldark/php-fpm)
 
 ## Supported tags and respective Dockerfile links
-- [`8.3`, `8.3.2`, latest`](https://github.com/nulldark/php/blob/master/8.3/Dockerfile)
+- [`8.3`, `8.3.2`, `latest`](https://github.com/nulldark/php/blob/master/8.3/Dockerfile)
 - [`8.2`, `8.2.15`](https://github.com/nulldark/php/blob/master/8.2/Dockerfile)
 
 ## Quick reference
@@ -45,8 +45,6 @@ services:
 
 The php-fpm image uses several environment variables which are easy to miss.
 
-| Variable       | Default Value  | Description |
-|----------------|----------------|-------------|
-| `PHP_USER_ID`  | `1000`         |             |
-| `PHP_GROUP_ID` | `1000`         |             |
-| `PHP_FPM_PORT` | `9000`         |             |
+| Variable      | Default Value | Description |
+|---------------|---------------|-------------|
+| `PHPIZE_DEPS` |               |             |

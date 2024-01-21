@@ -7,7 +7,7 @@ export BUILDKIT_PROGRESS=plain
 PHP_VERSION?=8.3
 
 TAG?=latest
-PLATFORM?=linux/arm64,linux/amd64
+PLATFORM?=linux/amd64
 
 DOCKER_REGISTRY:=ghcr.io
 DOCKER_IMAGE_NAME:=nulldark/php-fpm
