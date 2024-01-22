@@ -4,10 +4,10 @@ export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
 export BUILDKIT_PROGRESS=plain
 
-PHP_VERSION?=8.3
+PHP_VERSION ?= 8.3
 
-TAG?=latest
-PLATFORM?=linux/amd64
+TAG ?= latest
+PLATFORM ?= linux/amd64
 
 DOCKER_REGISTRY:=ghcr.io
 DOCKER_IMAGE_NAME:=nulldark/php-fpm
@@ -26,3 +26,5 @@ push:
        --platform $(PLATFORM) \
        --tag $(DOCKER_IMAGE) \
        --file $(PHP_VERSION)/Dockerfile $(PHP_VERSION)/
+
+release: build push
