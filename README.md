@@ -48,3 +48,7 @@ The php-fpm image uses several environment variables which are easy to miss.
 | Variable      | Default Value | Description |
 |---------------|---------------|-------------|
 | `PHPIZE_DEPS` |               |             |
+
+## LICENSE
+
+View [license](https://www.php.net/license/) information for the software contained in this image.
