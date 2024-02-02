@@ -1,23 +1,23 @@
 # PHP FPM Docker Container Images
 
-![GitHub release (with filter)](https://img.shields.io/github/v/release/nulldark/php-fpm)
+![GitHub release (with filter)](https://img.shields.io/github/v/release/nuldark/php-fpm)
 
 ## Supported tags and respective Dockerfile links
-- [`8.3`, `8.3.2`, `latest`](https://github.com/nulldark/php/blob/master/8.3/Dockerfile)
-- [`8.2`, `8.2.15`](https://github.com/nulldark/php/blob/master/8.2/Dockerfile)
+- [`8.3`, `8.3.2`, `latest`](https://github.com/nuldark/php/blob/master/8.3/Dockerfile)
+- [`8.2`, `8.2.15`](https://github.com/nuldark/php/blob/master/8.2/Dockerfile)
 
 ## Quick reference
 - **Image based on**:   
-  [ghrc.io/nulldark/alpine](https://github.com/nulldark/php)
+  [ghrc.io/nuldark/alpine](https://github.com/nuldark/php)
 
 - **Supported architectures**:    
   `linux/amd64`, `linux/arm64`
 
 - **Maintained by**:  
-  [nulldark](https://github.com/nulldark)
+  [nuldark](https://github.com/nuldark)
 
 - **Where to file issues**:    
-  [https://github.com/nulldark/php-fpm/issues](https://github.com/nulldark/php/issues?q=)
+  [https://github.com/nuldark/php-fpm/issues](https://github.com/nuldark/php/issues?q=)
 
 ## How to use this image
 
@@ -35,7 +35,7 @@ version: '3.1'
 
 services:
     php-fpm:
-        image: ghcr.io/nulldark/php-fpm
+        image: nuldark/php-fpm:latest
         restart: always
         ports:
             - "9000:9000"
