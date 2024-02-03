@@ -162,4 +162,4 @@ WORKDIR /var/www/html
 STOPSIGNAL SIGQUIT
 
 EXPOSE 9000
-CMD [ "php-fpm" ]
+CMD [ "php-fpm", "-F" ]
