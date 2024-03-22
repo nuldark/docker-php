@@ -65,7 +65,7 @@ RUN set -eux; \
            CFLAGS="$PHP_CFLAGS" \
            CPPFLAGS="$PHP_CPPFLAGS" \
            LDFLAGS="$PHP_LDFLAGS" \
-           PHP_BUILD_PROVIDER='https://github.com/nulldark/php-fpm' \
+           PHP_BUILD_PROVIDER='https://github.com/nuldarkk/php-fpm' \
            PHP_UNAME='Linux - Docker' \
          ; \
     \
