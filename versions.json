@@ -12,7 +12,7 @@
       "os": "ubuntu-latest",
       "directory": "8.2",
       "platform": "linux/amd64,linux/arm64",
-      "tags": "nuldark/php-fpm:8.2,nuldark/php-fpm:8.2.15"
+      "tags": "nuldark/php-fpm:8.2,nuldark/php-fpm:8.2.17"
     }
   ]
 }
