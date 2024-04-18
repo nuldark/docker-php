@@ -4,7 +4,7 @@
 
 ## Supported tags and respective Dockerfile links
 - [`8.3`, `8.3.6`, `latest`](https://github.com/nuldark/php/blob/master/8.3/Dockerfile)
-- [`8.2`, `8.2.17`](https://github.com/nuldark/php/blob/master/8.2/Dockerfile)
+- [`8.2`, `8.2.18`](https://github.com/nuldark/php/blob/master/8.2/Dockerfile)
 
 ## Quick reference
 - **Image based on**:   
