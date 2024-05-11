@@ -13,9 +13,9 @@ ENV PHPIZE_DEPS \
 
 ARG GPG_KEYS="1198C0117593497A5EC5C199286AF1F9897469DC AFD8691FDAEDF03BDF6E460563F15A9B715376CA C28D937575603EB4ABB725861C0779DC5C0A9DE4"
 
-ARG PHP_VERSION=8.3.6
-ARG PHP_URL="https://www.php.net/distributions/php-8.3.6.tar.xz"
-ARG PHP_ASC_URL="https://www.php.net/distributions/php-8.3.6.tar.xz.asc"
+ARG PHP_VERSION=8.3.7
+ARG PHP_URL="https://www.php.net/distributions/php-8.3.7.tar.xz"
+ARG PHP_ASC_URL="https://www.php.net/distributions/php-8.3.7.tar.xz.asc"
 ARG PHP_SHA256="53c8386b2123af97626d3438b3e4058e0c5914cb74b048a6676c57ac647f5eae"
 
 ENV PHP_INI_DIR="/usr/local/etc/php"

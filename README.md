@@ -3,7 +3,7 @@
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/nuldark/php-fpm)
 
 ## Supported tags and respective Dockerfile links
-- [`8.3`, `8.3.6`, `latest`](https://github.com/nuldark/php/blob/master/8.3/Dockerfile)
+- [`8.3`, `8.3.7`, `latest`](https://github.com/nuldark/php/blob/master/8.3/Dockerfile)
 - [`8.2`, `8.2.18`](https://github.com/nuldark/php/blob/master/8.2/Dockerfile)
 
 ## Quick reference
