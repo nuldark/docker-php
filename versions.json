@@ -1,6 +1,13 @@
 {
   "include": [
     {
+      "name": "8.3.7",
+      "os": "ubuntu-latest",
+      "directory": "8.3/base",
+      "platform": "linux/amd64,linux/arm64",
+      "tags": "nuldark/php:8.3.7,nuldark/php:8.3,nuldark/php:latest"
+    },
+    {
       "name": "8.3.7-cli",
       "os": "ubuntu-latest",
       "directory": "8.3/cli",
@@ -13,6 +20,13 @@
       "directory": "8.3/fpm",
       "platform": "linux/amd64,linux/arm64",
       "tags": "nuldark/php:8.3.7-fpm,nuldark/php:8.3-fpm"
+    },
+    {
+      "name": "8.2.19",
+      "os": "ubuntu-latest",
+      "directory": "8.2/base",
+      "platform": "linux/amd64,linux/arm64",
+      "tags": "nuldark/php:8.2.19,nuldark/php:8.2"
     },
     {
       "name": "8.2.19-cli",
