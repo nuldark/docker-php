@@ -1,18 +1,44 @@
 {
   "include": [
     {
-      "name": "8.3",
+      "name": "8.3.7-cli",
       "os": "ubuntu-latest",
-      "directory": "8.3",
+      "directory": "8.3/cli",
       "platform": "linux/amd64,linux/arm64",
-      "tags": "nuldark/php-fpm:8.3,nuldark/php-fpm:8.3.7,nuldark/php-fpm:latest"
+      "tags": [
+        "nuldark/php:8.3.7-cli",
+        "nuldark/php:8.3-cli"
+      ]
     },
     {
-      "name": "8.2",
+      "name": "8.3.7-fpm",
       "os": "ubuntu-latest",
-      "directory": "8.2",
+      "directory": "8.3/fpm",
       "platform": "linux/amd64,linux/arm64",
-      "tags": "nuldark/php-fpm:8.2,nuldark/php-fpm:8.2.19"
+      "tags": [
+        "nuldark/php:8.3.7-fpm",
+        "nuldark/php:8.3-fpm"
+      ]
+    },
+    {
+      "name": "8.2.19-cli",
+      "os": "ubuntu-latest",
+      "directory": "8.2/cli",
+      "platform": "linux/amd64,linux/arm64",
+      "tags": [
+        "nuldark/php:8.2.19-cli",
+        "nuldark/php:8.2-cli"
+      ]
+    },
+    {
+      "name": "8.2.19-fpm",
+      "os": "ubuntu-latest",
+      "directory": "8.2/fpm",
+      "platform": "linux/amd64,linux/arm64",
+      "tags": [
+        "nuldark/php:8.2.19-fpm",
+        "nuldark/php:8.2-fpm"
+      ]
     }
   ]
 }
