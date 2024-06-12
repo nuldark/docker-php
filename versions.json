@@ -22,25 +22,25 @@
       "tags": "nuldark/php:8.3.8-fpm,nuldark/php:8.3-fpm,nuldark/php:8-fpm,nuldark/php:fpm"
     },
     {
-      "name": "8.2.19",
+      "name": "8.2.20",
       "os": "ubuntu-latest",
       "directory": "8.2/base",
       "platform": "linux/amd64,linux/arm64",
-      "tags": "nuldark/php:8.2.19,nuldark/php:8.2"
+      "tags": "nuldark/php:8.2.20,nuldark/php:8.2"
     },
     {
-      "name": "8.2.19-cli",
+      "name": "8.2.20-cli",
       "os": "ubuntu-latest",
       "directory": "8.2/cli",
       "platform": "linux/amd64,linux/arm64",
-      "tags": "nuldark/php:8.2.19-cli,nuldark/php:8.2-cli"
+      "tags": "nuldark/php:8.2.20-cli,nuldark/php:8.2-cli"
     },
     {
-      "name": "8.2.19-fpm",
+      "name": "8.2.20-fpm",
       "os": "ubuntu-latest",
       "directory": "8.2/fpm",
       "platform": "linux/amd64,linux/arm64",
-      "tags": "nuldark/php:8.2.19-fpm,nuldark/php:8.2-fpm"
+      "tags": "nuldark/php:8.2.20-fpm,nuldark/php:8.2-fpm"
     }
   ]
 }
