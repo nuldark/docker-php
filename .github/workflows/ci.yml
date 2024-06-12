@@ -3,12 +3,12 @@ name: Build Docker Image
 on:
   pull_request:
     paths:
-      - .github/workflows/ci.yml
-      - ./**/**/Dockerfile
+      - '.github/workflows/ci.yml'
+      - '**/**/Dockerfile'
   push:
     paths:
-      - .github/workflows/ci.yml
-      - ./**/**/Dockerfile
+      - '.github/workflows/ci.yml'
+      - '**/**/Dockerfile'
 
 defaults:
   run:
